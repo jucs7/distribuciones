@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { ChangeEvent, useState } from 'react';
 import Papa from 'papaparse';
 import * as XLSX from 'xlsx';
@@ -32,7 +33,7 @@ const FileUploader: React.FC<FileUploaderProps> = ({ onNumbersLoaded }) => {
     const readCSV = (file: File) => {
         Papa.parse(file, {
             complete: (results) => {
-                const numbers = results.data.map((row: string[]) => parseFloat(row[0])).filter((num: number) => !isNaN(num));
+                const numbers = (results.data as any[]).map((row: any) => parseFloat(row[0].toString())).filter((num: number) => !isNaN(num));
                 onNumbersLoaded(numbers);
             },
             header: false
@@ -47,7 +48,7 @@ const FileUploader: React.FC<FileUploaderProps> = ({ onNumbersLoaded }) => {
             const sheetName = workbook.SheetNames[0];
             const worksheet = workbook.Sheets[sheetName];
             const json = XLSX.utils.sheet_to_json(worksheet, { header: 1 });
-            const numbers = json.map((row: any[]) => parseFloat(row[0])).filter((num: number) => !isNaN(num));
+            const numbers = (json as any[]).map((row: any) => parseFloat(row[0].toString())).filter((num: number) => !isNaN(num));
             onNumbersLoaded(numbers);
         };
         reader.readAsBinaryString(file);
