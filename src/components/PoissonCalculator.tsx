@@ -23,7 +23,7 @@ const PoissonCalculator: React.FC<PoissonCalculatorProps> = ({ numbers }) => {
 
     const poissonCDF = (media: number): number[] => {
         const limites = [0];
-        for (let i = 0; i <= 11; i++) {
+        for (let i = 0; i <= 12; i++) {
             limites.push(limites[i] + Math.exp(-media) * Math.pow(media, i) / factorial(i));
         }
         return limites;
@@ -44,11 +44,12 @@ const PoissonCalculator: React.FC<PoissonCalculatorProps> = ({ numbers }) => {
     };
 
     const handleCalculate = () => {
-        setResults(calculatePoisson(numbers, lambda));
-        calculateProbability();
+        const newResults = calculatePoisson(numbers, lambda);
+        setResults(newResults);
+        calculateProbability(newResults);
     };
 
-    const calculateProbability = () => {
+    const calculateProbability = (results: number[]) => {
         let count = 0;
 
         switch(calcType) {
