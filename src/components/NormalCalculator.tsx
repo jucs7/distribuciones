@@ -112,12 +112,12 @@ const BoxMullerCalculator: React.FC<BoxMullerCalculatorProps> = ({ numbers }) =>
                 </>
             )}
             <button className={styles.calculateButton} onClick={handleTransform}>Calcular</button>
+            <div className={styles.percentageContainer}>
+                <h3>Probabilidad: {percentage}</h3>
+            </div>
             <h3>Valores de X:</h3>
             <div className={styles.resultsContainer}>
                 <p>{transformedNumbers.join(', ')}</p>
-            </div>
-            <div className={styles.percentageContainer}>
-                <h3>Probabilidad: {percentage}</h3>
             </div>
         </div>
     );
