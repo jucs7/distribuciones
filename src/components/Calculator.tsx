@@ -5,6 +5,7 @@ import ExponentialCalculator from './ExponentialCalculator';
 import PoissonCalculator from './PoissonCalculator';
 import NormalCalculator from './NormalCalculator';
 import BinomialCalculator from './BinomialCalculator';
+import ErlangCalculator from './ErlangCalculator';
 
 interface CalculatorProps {
     distribution: string;
@@ -23,6 +24,8 @@ const Calculator: React.FC<CalculatorProps> = ({ distribution, numbers }) => {
                 return <NormalCalculator numbers={numbers}/>
             case 'Binomial':
                 return <BinomialCalculator numbers={numbers}/>
+            case 'Erlang':
+                return <ErlangCalculator numbers={numbers}/>
             // Agregar casos para otras distribuciones
             default:
                 return <div>Seleccione una distribución válida</div>;
