@@ -15,6 +15,10 @@ const App: React.FC = () => {
     return (
         <div className="App">
             <h1 className="text-3xl mt-5 ml-5">Calculadora de distribuciones</h1>
+            <div className="mt-5 ml-5">
+                <p>Juan Luis Correa Solórzano</p>
+                <p>Juan Diego Martinez Causil</p>
+            </div>
             <CalculatorSelect onSelect={setDistribution} />
             <FileUploader onNumbersLoaded={handleNumbersLoaded} />
             <Calculator distribution={distribution} numbers={numbers} />
