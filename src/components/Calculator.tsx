@@ -3,6 +3,7 @@ import React from 'react';
 import styles from './Calculator.module.css';
 import ExponentialCalculator from './ExponentialCalculator';
 import PoissonCalculator from './PoissonCalculator';
+import NormalCalculator from './NormalCalculator';
 
 interface CalculatorProps {
     distribution: string;
@@ -17,6 +18,8 @@ const Calculator: React.FC<CalculatorProps> = ({ distribution, numbers }) => {
                 return <ExponentialCalculator numbers={numbers}/>;
             case 'Poisson':
                 return <PoissonCalculator numbers={numbers}/>;
+            case 'Normal':
+                return <NormalCalculator numbers={numbers}/>
             // Agregar casos para otras distribuciones
             default:
                 return <div>Seleccione una distribución válida</div>;
