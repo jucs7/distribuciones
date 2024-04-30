@@ -38,7 +38,7 @@ const ExponentialCalculator: React.FC<ExponentialCalculatorProps> = ({ numbers }
                 count = results.filter(x => x > value1 && x < value2).length;
                 break;
             case 'tails':
-                count = results.filter(x => x < value1 || x > value2).length;
+                count = results.filter(x => x > value1 || x < value2).length;
                 break;
             default:
                 count = 0;
